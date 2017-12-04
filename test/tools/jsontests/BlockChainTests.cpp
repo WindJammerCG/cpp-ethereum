@@ -239,7 +239,7 @@ json_spirit::mObject fillBCTest(json_spirit::mObject const& _input)
 	genesisBlock.setBlockHeader(genesisBlock.blockHeader());
 
 	TestBlockChain testChain(genesisBlock);
-	assert(testChain.interface().isKnown(genesisBlock.blockHeader().hash(WithSeal)));
+	assert(testChain.getInterface().isKnown(genesisBlock.blockHeader().hash(WithSeal)));
 
 	output["genesisBlockHeader"] = writeBlockHeaderToJson(genesisBlock.blockHeader());
 	output["genesisRLP"] = toHexPrefixed(genesisBlock.bytes());
@@ -432,7 +432,7 @@ void testBCTest(json_spirit::mObject const& _o)
 	TestBlockChain blockchain(genesisBlock);
 
 	TestBlockChain testChain(genesisBlock);
-	assert(testChain.interface().isKnown(genesisBlock.blockHeader().hash(WithSeal)));
+	assert(testChain.getInterface().isKnown(genesisBlock.blockHeader().hash(WithSeal)));
 
 	if (_o.count("genesisRLP") > 0)
 	{
